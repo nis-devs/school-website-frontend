@@ -85,7 +85,7 @@ const RootLayout = (props: RootLayoutProps) => {
       <body>
         <main className="relative mx-auto max-w-4xl p-6">
           <Header />
-          {children}
+          <div className="flex flex-col items-center">{children}</div>
           <Footer />
         </main>
       </body>

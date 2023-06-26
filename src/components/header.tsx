@@ -13,9 +13,6 @@ const headerItems = {
   "/about": {
     name: "about",
   },
-  "/dashboard": {
-    name: "dashboard",
-  },
   "/blog": {
     name: "blog",
   },

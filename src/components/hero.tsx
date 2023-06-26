@@ -19,25 +19,25 @@ const Hero = () => {
       </div>
       <div>
         <Button variant={"ghost"} asChild>
-          <Link href="mailto:info@fmalm.nis.edu.kz">Email</Link>
+          <a href="mailto:info@fmalm.nis.edu.kz">Email</a>
         </Button>
         <Button variant={"ghost"} asChild>
-          <Link
+          <a
             href="tel:87273310104"
             target="_blank"
             rel="noopener noreferrer"
           >
             Contact
-          </Link>
+          </a>
         </Button>
         <Button variant={"ghost"}>
-          <Link
+          <a
             href="https://go.2gis.com/dvoxj"
             target="_blank"
             rel="noopener noreferrer"
           >
             Location
-          </Link>
+          </a>
         </Button>
       </div>
     </>
