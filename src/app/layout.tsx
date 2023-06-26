@@ -69,9 +69,7 @@ const firaCode = Fira_Code({
   subsets: ["latin"],
 });
 
-const RootLayout = (props: RootLayoutProps) => {
-  const { children } = props;
-
+const RootLayout = ({ children }: RootLayoutProps) => {
   return (
     <html
       lang="en-US"

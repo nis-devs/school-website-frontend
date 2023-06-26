@@ -25,7 +25,7 @@ export const Header = () => {
     <header className="flex flex-col sm:flex-row mb-5 md:mb-10 items-center">
       <span className="text-md md:text-lg whitespace-nowrap font-bold">
         <Link href="/">
-          <Image alt="logo" src="/logo.png" width={40} height={40} />
+          <Image alt="logo" src="/logo.png" width={32} height={32} />
         </Link>
       </span>
 
