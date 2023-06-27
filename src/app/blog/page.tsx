@@ -1,5 +1,6 @@
 import { Metadata } from "next";
 import FilteredPosts from "@/components/filtered-posts";
+import { fetchAPI } from "@/lib/strapi";
 
 export const metadata: Metadata = {
   title: "Blog",
@@ -7,21 +8,11 @@ export const metadata: Metadata = {
     "Read articles about our school, students and many different events happening in our community.",
 };
 
-async function getPosts() {
-  const res = await fetch(
-    "http://127.0.0.1:1337/api/posts?populate=*&sort=publishedAt:desc"
-  );
-
-  if (!res.ok) {
-    // This will activate the closest `error.js` Error Boundary
-    throw new Error("Failed to fetch data");
-  }
-
-  return res.json();
-}
-
 const Blog = async () => {
-  const posts = await getPosts();
+  const posts = await fetchAPI("/posts", {
+    populate: "*",
+    sort: "publishedAt:desc",
+  });
 
   return (
     <div className="pb-24">
