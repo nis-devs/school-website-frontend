@@ -1,5 +1,4 @@
 "use client";
-
 import {
   CommandDialog,
   CommandEmpty,
@@ -59,8 +58,8 @@ const CommandMenu = ({ categories }: { categories: Categories }) => {
           onSelect: () =>
             runCommand(() =>
               window.open(
-                `${category.attributes.url}/${page.attributes.slug}`,
-                "_blank"
+                `/${category.attributes.url}/${page.attributes.slug}`,
+                "_self"
               )
             ),
         };
