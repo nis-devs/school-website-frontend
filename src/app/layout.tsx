@@ -5,6 +5,7 @@ import "@/app/globals.css";
 
 import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
+import { fetchAPI } from "@/lib/strapi";
 
 type RootLayoutProps = {
   children: React.ReactNode;
@@ -69,7 +70,11 @@ const firaCode = Fira_Code({
   subsets: ["latin"],
 });
 
-const RootLayout = ({ children }: RootLayoutProps) => {
+const RootLayout = async ({ children }: RootLayoutProps) => {
+  const categories = await fetchAPI("/categories", {
+    populate: "pages",
+  });
+
   return (
     <html
       lang="en-US"
@@ -82,7 +87,7 @@ const RootLayout = ({ children }: RootLayoutProps) => {
     >
       <body>
         <main className="relative mx-auto max-w-4xl p-6">
-          <Header />
+          <Header categories={categories} />
           <div className="flex flex-col items-center">{children}</div>
           <Footer />
         </main>

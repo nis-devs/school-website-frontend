@@ -16,11 +16,10 @@ import {
   IconCode,
   IconCommand,
   IconDeviceLaptop,
-  IconMoon,
-  IconSun,
   IconUser,
 } from "@tabler/icons-react";
 import React from "react";
+import { Categories } from "@/types/menu";
 
 type Groups = {
   name: string;
@@ -31,13 +30,12 @@ type Groups = {
   }[];
 }[];
 
-const CommandMenu = () => {
+const CommandMenu = ({ categories }: { categories: Categories }) => {
   const [open, setOpen] = React.useState(false);
-  const [language, setLanguage] = React.useState("en");
 
   React.useEffect(() => {
     const down = (e: KeyboardEvent) => {
-      if (e.key === "k" && (e.metaKey || e.ctrlKey)) {
+      if ((e.metaKey || e.ctrlKey) && e.key === "k") {
         e.preventDefault();
         setOpen((open) => !open);
       }
@@ -51,6 +49,24 @@ const CommandMenu = () => {
     setOpen(false);
     command();
   }, []);
+
+  const menu: Groups = categories.data.map((category: any) => {
+    return {
+      name: category.attributes.name,
+      actions: category.attributes.pages.data.map((page: any) => {
+        return {
+          title: page.attributes.title,
+          onSelect: () =>
+            runCommand(() =>
+              window.open(
+                `${category.attributes.url}/${page.attributes.slug}`,
+                "_blank"
+              )
+            ),
+        };
+      }),
+    };
+  });
 
   const groups: Groups = [
     {
@@ -89,21 +105,6 @@ const CommandMenu = () => {
       ],
     },
     {
-      name: "Language",
-      actions: [
-        {
-          title: "Қазақша",
-          icon: <IconSun size={16} className="mr-2" />,
-          onSelect: () => runCommand(() => setLanguage("kk")),
-        },
-        {
-          title: "Русский",
-          icon: <IconMoon size={16} className="mr-2" />,
-          onSelect: () => runCommand(() => setLanguage("ru")),
-        },
-      ],
-    },
-    {
       name: "Development",
       actions: [
         {
@@ -119,6 +120,7 @@ const CommandMenu = () => {
         },
       ],
     },
+    ...menu,
   ];
 
   return (

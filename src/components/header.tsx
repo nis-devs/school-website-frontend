@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import CommandMenu from "./command-menu";
 import { Button } from "./ui/button";
 import Image from "next/image";
+import { Categories } from "@/types/menu";
 
 const headerItems = {
   "/": {
@@ -18,7 +19,7 @@ const headerItems = {
   },
 };
 
-export const Header = () => {
+export const Header = ({ categories }: { categories: Categories }) => {
   const pathname = usePathname();
 
   return (
@@ -38,23 +39,21 @@ export const Header = () => {
         {Object.entries(headerItems).map(([path, { name }]) => {
           const isActive = path === pathname;
           return (
-            <>
-              <Button variant={"link"} key={path} asChild>
-                <Link href={path}>
-                  {path === pathname ? (
-                    <span className="font-semibold">{name}</span>
-                  ) : (
-                    name
-                  )}
-                </Link>
-              </Button>
-            </>
+            <Button variant={"link"} key={path} asChild>
+              <Link href={path}>
+                {path === pathname ? (
+                  <span className="font-semibold">{name}</span>
+                ) : (
+                  name
+                )}
+              </Link>
+            </Button>
           );
         })}
       </nav>
 
       <div className="flex flex-row ml-0 sm:ml-2 space-x-2 items-center justify-center sm:justify-end">
-        <CommandMenu />
+        <CommandMenu categories={categories} />
       </div>
     </header>
   );

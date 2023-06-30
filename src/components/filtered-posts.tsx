@@ -16,7 +16,6 @@ type FilteredPostsProps = {
 
 const FilteredPosts = (props: FilteredPostsProps) => {
   const { posts } = props;
-  console.log(posts);
   const [searchValue, setSearchValue] = useState("");
 
   const filteredPosts = posts.data.filter((post) =>
