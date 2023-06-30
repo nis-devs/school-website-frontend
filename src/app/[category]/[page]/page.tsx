@@ -54,11 +54,7 @@ const MenuPage = async ({ params }: Params) => {
 
   return (
     <div className="pb-24 space-y-6">
-      <Header
-        category={params.category}
-        title={page.attributes.title}
-        date={page.attributes.updatedAt}
-      />
+      <Header category={params.category} title={page.attributes.title} />
       <div
         className="prose"
         dangerouslySetInnerHTML={{ __html: micromark(page.attributes.content) }}

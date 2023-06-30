@@ -68,6 +68,7 @@ const CommandMenu = ({ categories }: { categories: Categories }) => {
   });
 
   const groups: Groups = [
+    ...menu,
     {
       name: "Useful Links",
       actions: [
@@ -119,7 +120,6 @@ const CommandMenu = ({ categories }: { categories: Categories }) => {
         },
       ],
     },
-    ...menu,
   ];
 
   return (
