@@ -1,9 +1,11 @@
 import Hero from "@/components/hero";
-import { metadata } from "@/lib/meta";
+import { Metadata } from "next";
 
-export async function generateMetadata({ params }: any) {
-  return metadata;
-}
+export const metadata: Metadata = {
+  title: "Home | NIS PM Almaty",
+  description:
+    "Homepage of Nazarbayev Intellectual School of Physics and Math Almaty",
+};
 
 export default function Home() {
   return (

@@ -26,7 +26,12 @@ export const Header = ({ categories }: { categories: Categories }) => {
     <header className="flex flex-col sm:flex-row mb-5 md:mb-10 items-center">
       <span className="text-md md:text-lg whitespace-nowrap font-bold">
         <Link href="/">
-          <Image alt="logo" src="/logo.png" width={32} height={32} />
+          <Image
+            alt="logo"
+            src="/static/images/logo.png"
+            width={32}
+            height={32}
+          />
         </Link>
       </span>
 
